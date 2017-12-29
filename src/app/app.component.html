@@ -1,19 +1,26 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div>
-  Welcome to {{ title }}!
-</div>
 
-<!-- Dropdown Trigger -->
-<a class='dropdown-button btn' href='#' data-activates='dropdown1'>Drop Me!</a>
+<header>
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo right">Logo</a>
+      <ul id="nav-mobile" class="left hide-on-med-and-down">
+        <li [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active">
+          <a routerLink="/">Home</a></li>
+        <li routerLinkActive="active"><a routerLink="/api">Components</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
 
-<!-- Dropdown Structure -->
-<ul id='dropdown1' class='dropdown-content'>
-  <li><a href="#!">one</a></li>
-  <li><a href="#!">two</a></li>
-  <li class="divider"></li>
-  <li><a href="#!">three</a></li>
-  <li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
-  <li><a href="#!"><i class="material-icons">cloud</i>five</a></li>
-</ul>
+<main>
+  <app-alert></app-alert>
 
-<router-outlet></router-outlet>
+  <router-outlet></router-outlet>
+</main>
+
+<footer class="page-footer">
+  <div class="footer-copyright">
+    <div class="container">© 2014-2017 Materialize, All rights reserved. </div>
+  </div>
+</footer>
