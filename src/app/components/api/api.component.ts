@@ -3,7 +3,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { AlertService } from '../../services/alert.service';
-import { TOAST_DELAY } from '../../config';
+import { environment } from '../../../environments/environment';
 
 
 @Component({
@@ -17,13 +17,13 @@ export class ApiComponent implements OnInit {
 
   ngOnInit(): void {
     // Make the HTTP request:
-    this.api.get().subscribe(data => {
+    this.api.search('').subscribe(data => {
       // Read the result field from the JSON response.
       this.user = data;
     },
       (err) => {
         console.error(err);
-        Materialize.toast('I am a toast!', TOAST_DELAY);
+        Materialize.toast('I am a toast!', environment.TOAST_DELAY);
         // this.alertService.error('Get data error!');
       });
   }

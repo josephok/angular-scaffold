@@ -3,24 +3,30 @@
 <header>
   <nav>
     <div class="nav-wrapper">
-      <a href="#" class="brand-logo right">Logo</a>
-      <ul id="nav-mobile" class="left hide-on-med-and-down">
+
+      <ul id="nav-mobile">
         <li [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active">
-          <a routerLink="/">Home</a></li>
-        <li routerLinkActive="active"><a routerLink="/api">Components</a></li>
+          <a routerLink="/">音乐</a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="/api">Components</a>
+        </li>
       </ul>
+
+      <img src="../assets/materialize.svg" alt="Logo" />
+
     </div>
   </nav>
+
 </header>
 
 <main>
   <app-alert></app-alert>
-
   <router-outlet></router-outlet>
 </main>
 
 <footer class="page-footer">
   <div class="footer-copyright">
-    <div class="container">© 2014-2017 Materialize, All rights reserved. </div>
+    <div class="container">© 2017 Joseph, All rights reserved. </div>
   </div>
 </footer>

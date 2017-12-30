@@ -1,0 +1,42 @@
+<!-- 播放器 -->
+<div id="player"></div>
+
+<br>
+<table class="bordered" *ngIf="songs.length > 0">
+  <thead>
+    <tr>
+      <th>歌曲名</th>
+      <th>艺术家</th>
+      <th>专辑</th>
+      <th>播放</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let song of songs">
+      <td>{{song.name}}</td>
+      <td>
+        <span *ngFor="let artist of song.artists">{{artist.name}}</span>
+      </td>
+      <td>
+        {{song.album.name}}
+        <br>
+        <img src="{{song.album.cover}}" alt="{{song.album.name}}">
+      </td>
+      <td>
+        <a (click)="addToPlay(song)" class="btn-floating btn-large waves-effect waves-light red">
+          <i class="material-icons">add</i>
+        </a>
+      </td>
+    </tr>
+
+  </tbody>
+</table>
+
+<ul class="pagination">
+
+  <li [ngClass]="{'active': currentPage == i}" *ngFor="let i of pages;">
+    <a href="#!" (click)="goTo(i)">{{i}}</a>
+  </li>
+
+</ul>

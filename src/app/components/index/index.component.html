@@ -1,3 +1,12 @@
-<p>
-  index works!
-</p>
+<section class="container">
+  <form (ngSubmit)="searchSong(keyword.value);keyword.value=''">
+    <div class="search-wrapper card">
+      <input id="search" tabindex="1" placeholder="输入歌曲名称搜索" #keyword/>
+      <i class="material-icons" (click)="searchSong(keyword.value);keyword.value=''">search</i>
+    </div>
+  </form>
+</section>
+
+<!-- <a class="waves-effect waves-light btn" *ngIf="songs.xiami">找到{{songs.xiami.total}}首歌曲</a>
+<br> -->
+<app-song-list *ngIf="songs.xiami" [songs]="songs.xiami.songList" [pages]="pages" (changePage)="changePage($event)"></app-song-list>
