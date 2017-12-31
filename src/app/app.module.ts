@@ -5,14 +5,14 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { IndexComponent } from './components/index/index.component';
-import { ApiComponent } from './components/api/api.component';
-import { AlertComponent } from './components/alert/alert.component';
+import { IndexComponent } from './index/index.component';
+import { ApiComponent } from './api/api.component';
+import { AlertComponent } from './alert/alert.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { ApiService } from './services/api.service';
 import { AlertService } from './services/alert.service';
-import { SongListComponent } from './components/song-list/song-list.component';
+import { SongListComponent } from './song-list/song-list.component';
 
 @NgModule({
   declarations: [

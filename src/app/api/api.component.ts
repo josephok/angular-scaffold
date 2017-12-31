@@ -1,9 +1,9 @@
-/// <reference path="../../declare.ts" />
+/// <reference path="../declare.ts" />
 
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../../services/api.service';
-import { AlertService } from '../../services/alert.service';
-import { environment } from '../../../environments/environment';
+import { ApiService } from '../services/api.service';
+import { AlertService } from '../services/alert.service';
+import { environment } from '../../environments/environment';
 
 
 @Component({

@@ -1,8 +1,8 @@
-/// <reference path="../../declare.ts" />
+/// <reference path="../declare.ts" />
 
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Song } from '../../models/song';
-import { environment as env } from '../../../environments/environment';
+import { Song } from '../models/song';
+import { environment as env } from '../../environments/environment';
 
 @Component({
   selector: 'app-song-list',
