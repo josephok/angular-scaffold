@@ -1,25 +1,16 @@
 import * as express from 'express';
 import * as cors from 'cors';
-import * as apiController from './controllers/api';
+import * as bodyParser from 'body-parser';
+const router = require('./router');
 
 const app = express();
 app.set('port', process.env.PORT || 3000);
-
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 // 启用cors
 app.use(cors());
 
-const router = express.Router();
 app.use('/api', router);
-
-router.get('/', function (req, res) {
-  res.json({
-    id: '1',
-    name: 'joe',
-    firstName: 'Joseph',
-    lastName: 'Wu',
-    birthday: new Date(Date.UTC(1987, 10, 1, 0, 0, 0))
-  });
-});
 
 app.listen(app.get('port'), () => {
   console.log(('  App is running at http://localhost:%d in %s mode'), app.get('port'), app.get('env'));

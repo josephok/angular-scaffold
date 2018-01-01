@@ -1,7 +1,10 @@
 export interface User {
   id: string;
-  name: string;
-  firstName: string;
-  lastName: string;
-  birthday?: Date;
+  token: string;
+}
+
+export interface NewUser {
+  username: string;
+  password: string;
+  confirmPass: string;
 }
