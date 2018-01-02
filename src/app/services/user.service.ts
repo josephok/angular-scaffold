@@ -33,4 +33,24 @@ export class UserService {
   get authticated(): boolean {
     return Boolean(localStorage.getItem('currentUser'));
   }
+
+  /**
+   * 返回认证header
+   *
+   * @returns {(string | null)} token格式`Bearer ${token}`
+   * @memberof UserService
+   */
+  getAuthorizationHeader(): string | null {
+    let token: string | null;
+    try {
+      token = JSON.parse(localStorage.getItem('currentUser')).token;
+    } catch (error) {
+      token = null;
+    }
+    if (token) {
+      return `Bearer ${token}`;
+    } else {
+      return null;
+    }
+  }
 }

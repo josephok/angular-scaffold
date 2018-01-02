@@ -16,9 +16,11 @@ import { UserService } from './services/user.service';
 import { SongListComponent } from './song-list/song-list.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthGuard } from './auth-guard.guard';
 import { LoadingComponent } from './loading/loading.component';
+
+import { AuthInterceptor } from './intercept';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,18 @@ import { LoadingComponent } from './loading/loading.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [ApiService, AlertService, UserService, AuthGuard],
+  providers: [
+    ApiService,
+    AlertService,
+    UserService,
+    AuthGuard,
+
+    // 请求api每次带上header
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

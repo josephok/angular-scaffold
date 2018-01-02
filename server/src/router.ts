@@ -47,11 +47,15 @@ router.post('/login', function (req, res, next: NextFunction) {
 });
 
 
-router.post('/signup', function (req, res, next) {
+router.post('/signup', function (req: Request, res: Response, next: NextFunction) {
   const user = new User({
     username: req.body.username,
     password: req.body.password
   });
+
+  if (!req.body.username || !req.body.password) {
+    return res.status(400).send({ message: '用户名密码必填' });
+  }
 
   User.findOne({ username: req.body.username }, (err, existingUser) => {
     if (err) { return next(err); }

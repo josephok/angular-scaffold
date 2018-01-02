@@ -8,8 +8,8 @@ const SECRECT = 'secret';
 export function verifyToken(req: Request, res: Response, next: NextFunction) {
   let token: string;
   try {
-    if (req.headers['Authorization']) {
-      token = (<string>req.headers['Authorization']).split('Bearer ')[1];
+    if (req.headers['authorization']) {
+      token = (<string>req.headers['authorization']).split('Bearer ')[1];
     }
   } catch (error) {
     console.error(error);
