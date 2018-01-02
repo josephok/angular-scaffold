@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
@@ -13,11 +13,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { ApiService } from './services/api.service';
 import { AlertService } from './services/alert.service';
 import { UserService } from './services/user.service';
-import { AuthGuardService } from './services/auth-guard.service';
 import { SongListComponent } from './song-list/song-list.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { ReactiveFormsModule } from '@angular/forms';
+
+import { AuthGuard } from './auth-guard.guard';
+import { LoadingComponent } from './loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     AlertComponent,
     SongListComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +38,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [ApiService, AlertService, UserService, AuthGuardService],
+  providers: [ApiService, AlertService, UserService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

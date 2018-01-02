@@ -3,9 +3,7 @@ import * as bcrypt from 'bcrypt-nodejs';
 
 // Set up default mongoose connection
 const mongoDB = 'mongodb://127.0.0.1/angular';
-mongoose.connect(mongoDB, {
-  useMongoClient: true
-});
+mongoose.connect(mongoDB);
 
 // Get Mongoose to use the global promise library
 (<any>mongoose).Promise = global.Promise;
@@ -16,6 +14,12 @@ const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 const Schema = mongoose.Schema;
+
+export type UserModel = mongoose.Document & {
+  username: string,
+  password: string,
+  comparePassword: (candidatePassword: string) => boolean
+};
 
 const userSchema = new Schema(
   {

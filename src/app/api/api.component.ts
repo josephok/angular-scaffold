@@ -16,6 +16,9 @@ export class ApiComponent implements OnInit {
   constructor(private api: ApiService, private alertService: AlertService) { }
 
   ngOnInit(): void {
+    // 测试api
+    this.api.test().subscribe(data => { }, err => { });
+
     // Make the HTTP request:
     this.api.search('').subscribe(data => {
       // Read the result field from the JSON response.

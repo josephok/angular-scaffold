@@ -4,14 +4,14 @@ import { IndexComponent } from './index/index.component';
 import { ApiComponent } from './api/api.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { AuthGuardService } from './services/auth-guard.service';
+import { AuthGuard } from './auth-guard.guard';
 
 const routes: Routes = [
   {
-    path: '', component: IndexComponent, canActivate: [AuthGuardService]
+    path: '', component: IndexComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'api', component: ApiComponent, canActivate: [AuthGuardService]
+    path: 'api', component: ApiComponent, canActivate: [AuthGuard]
   },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent }

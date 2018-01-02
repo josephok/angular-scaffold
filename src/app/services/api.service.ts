@@ -27,4 +27,10 @@ export class ApiService {
     return this.http.get<MusicData>(url, { params: params });
   }
 
+  // 测试用
+  test() {
+    const url = `${environment.USER_URL}/api`;
+    return this.http.get(url);
+  }
+
 }

@@ -1,30 +1,48 @@
 <section class="container">
-  <p>注册</p>
+  <p>注册
+    <a routerLink="/login">已有帐号？点击登入</a>
+  </p>
   <div class="row">
-    <form class="col s12" [formGroup]="regForm">
+    <form class="col s12" [formGroup]="regForm" (ngSubmit)="registry()">
       <div class="row">
         <div class="input-field col s12">
-          <input id="first_name" type="text" class="validate" formControlName="name">
-          <label for="first_name">User Name</label>
+          <i class="material-icons prefix">account_circle</i>
+          <input id="icon_prefix" type="text" formControlName="username">
+          <label for="icon_prefix">用户名</label>
+
+          <div *ngIf="username.errors?.required && (username.dirty || username.touched)">
+            请填写用户名
+          </div>
         </div>
+
+        <div class="input-field col s12">
+          <i class="material-icons prefix">lock</i>
+          <input id="icon_password" type="password" formControlName="password">
+          <label for="icon_password">密码</label>
+
+          <div *ngIf="password.errors?.required && (password.dirty || password.touched)">
+            请填写密码
+          </div>
+        </div>
+
+        <div class="input-field col s12">
+          <i class="material-icons prefix">lock</i>
+          <input id="icon_password1" type="password" formControlName="confirmPass">
+          <label for="icon_password1">确认密码</label>
+
+          <div *ngIf="confirmPass.errors?.required && (confirmPass.dirty || confirmPass.touched)">
+            请填写确认密码
+          </div>
+        </div>
+
       </div>
 
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="password" type="password" class="validate" formControlName="password">
-          <label for="password">Password</label>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="confirm_password" type="password" class="validate" formControlName="confirmPass">
-          <label for="confirm_password">Confirm Password</label>
-        </div>
-      </div>
-      <button class="btn waves-effect waves-light" type="submit" name="action" [disabled]="regForm.invalid">Submit
-        <i class="material-icons right">send</i>
+      <div class="alert alert-danger" *ngIf="confirmPass.value && confirmPass.value != password.value">密码不匹配!</div>
+      <button class="btn waves-effect waves-light" type="submit" name="action" [disabled]="regForm.invalid||loading">Submit
+          <i class="material-icons right">send</i>
       </button>
+      <app-loading *ngIf="loading"></app-loading>
+
     </form>
   </div>
 </section>

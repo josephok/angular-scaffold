@@ -16,6 +16,12 @@ export class UserService {
     return this.http.post<User>(url, data);
   }
 
+  register(username: string, password: string): Observable<User> {
+    const url = `${environment.USER_URL}/api/signup`;
+    const data = { username: username, password: password };
+    return this.http.post<User>(url, data);
+  }
+
   logout() {
     const token = JSON.parse(localStorage.getItem('currentUser')).token;
     localStorage.removeItem('currentUser');
