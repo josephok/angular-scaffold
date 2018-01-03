@@ -19,23 +19,25 @@ export function verifyToken(req: Request, res: Response, next: NextFunction) {
     return res.status(401).send({ auth: false, message: 'No token provided.' });
   }
 
-  Token.findOne({ token: token }, (err: any, token: any) => {
+  Token.findOne({ token: token }, (err: any, tokenDb: any) => {
     if (err) {
-      return res.status(500).send({ message: 'server error' });
+      return next(err);
     }
-    if (!token) { return res.status(401).send({ message: 'invalid token' }); }
-  });
-
-  jwt.verify(token, SECRECT, function (err: any, decoded: any) {
-    if (err) {
-      Token.remove({ token: token }, (err) => {
-        if (err) { console.error(err); }
-      });
-
-      return res.status(401).send({ auth: false, message: 'invalid token' });
+    if (!tokenDb) {
+      // return next(err);
+      return res.status(401).send({ message: 'invalid token' });
     }
-    // if everything good, save to request for use in other routes
-    next();
+    jwt.verify(token, SECRECT, function (err: any, decoded: any) {
+      if (err) {
+        Token.remove({ token: token }, (err) => {
+          if (err) { console.error(err); }
+        });
+
+        return res.status(401).send({ message: 'invalid token' });
+      }
+      // if everything good, save to request for use in other routes
+      next();
+    });
   });
 }
 // module.exports = verifyToken;

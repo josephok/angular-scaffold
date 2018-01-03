@@ -81,4 +81,15 @@ router.post('/signup', function (req: Request, res: Response, next: NextFunction
 
 });
 
+
+// 登出
+router.post('/api/logout', function (req: Request, res: Response, next: NextFunction) {
+  const token = req.body.token;
+  Token.remove({
+    token: token
+  }, (err) => {
+    if (err) { return next(err); }
+  });
+});
+
 module.exports = router;

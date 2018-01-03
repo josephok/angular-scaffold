@@ -12,13 +12,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // 启用cors
 app.use(cors());
 
+app.use('/api', router);
+
 // 错误处理
 app.use(function (err: any, req: Request, res: Response, next: NextFunction) {
   console.error(err.stack);
   res.status(500).send('server error');
 });
-
-app.use('/api', router);
 
 app.listen(app.get('port'), () => {
   console.log(('  App is running at http://localhost:%d in %s mode'), app.get('port'), app.get('env'));

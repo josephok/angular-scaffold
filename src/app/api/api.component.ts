@@ -18,17 +18,6 @@ export class ApiComponent implements OnInit {
   ngOnInit(): void {
     // 测试api
     this.api.test().subscribe(data => { }, err => { });
-
-    // Make the HTTP request:
-    this.api.search('').subscribe(data => {
-      // Read the result field from the JSON response.
-      this.user = data;
-    },
-      (err) => {
-        console.error(err);
-        Materialize.toast('I am a toast!', environment.TOAST_DELAY);
-        // this.alertService.error('Get data error!');
-      });
   }
 
 }
